@@ -1,0 +1,886 @@
+/* ========================================================= */
+/*                        BASE STYLES                        */
+/* ========================================================= */
+/* ========================================================= */
+/*                       HERO SECTION                        */
+/*   This controls the entire visible area at the top.       */
+/*   Change height, padding, spacing, overlay darkness here. */
+/* ========================================================= */
+
+.hero {
+  position: relative; /* allows video + overlay to be positioned inside */
+  width: 100%; /* full width of browser */
+  height: 667px; /* matches provided artboard height */
+  overflow: hidden; /* hides video edges when cropping */
+
+  display: flex; /* centers content horizontally + vertically */
+  align-items: center; /* vertically centre hero text */
+  justify-content: center; /* horizontally centre hero text */
+}
+
+/* ========================================================= */
+/*                      BACKGROUND VIDEO                     */
+/*   Fills entire hero area and crops to maintain coverage.  */
+/* ========================================================= */
+
+.hero-video {
+  position: absolute; /* sits behind text */
+  top: 0;
+  left: 0;
+  width: 100%; /* always fills width */
+  height: 100%; /* always fills height */
+  object-fit: cover; /* <<< IMPORTANT: ensures video covers the section without distortion */
+  z-index: 1; /* below overlay + text */
+}
+
+/* ========================================================= */
+/*                        DARK OVERLAY                       */
+/*   Makes the text readable by darkening the background.    */
+/*   Adjust TRANSPARENCY here.                               */
+/* ========================================================= */
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+  /*        ↑   ↑   ↑   ↑
+    RED  GREEN BLUE ALPHA (opacity)
+    To make darker: increase to 0.6
+    To make lighter: reduce to 0.25  
+  */
+
+  z-index: 2; /* sits above video, below text */
+}
+
+/* ========================================================= */
+/*                        HERO CONTENT                       */
+/*   This contains the <h1> text.                            */
+/*   Modify text alignment + spacing here.                   */
+/* ========================================================= */
+
+.hero-content {
+  position: relative;
+  z-index: 3; /* highest layer — sits above video + overlay */
+  text-align: center; /* centre the heading */
+  padding: 0 20px; /* left/right breathing room on small screens */
+}
+
+/* ========================================================= */
+/*                           HEADLINE                        */
+/*   Edit the text size, spacing, and line-height here.      */
+/* ========================================================= */
+
+.hero h1 {
+  color: #fff; /* text colour */
+  font-family: 'Lora', serif;
+  font-size: 4rem; /* 64px */
+  line-height: 1.2; /* space between lines */
+  font-weight: 400; /* Lora regular */
+}
+
+/* ========================================================= */
+/*                    TABLET ADJUSTMENTS                     */
+/* ========================================================= */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .hero {
+    height: 335px;
+  }
+
+  .hero h1 {
+    font-size: 2rem; /* 32px */
+    text-align: center;
+  }
+}
+
+/* ========================================================= */
+/*                     MOBILE ADJUSTMENTS                    */
+/* ========================================================= */
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .hero {
+    height: 195px;
+  }
+
+  .hero-content {
+    width: 163px;
+    height: 78px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero h1 {
+    font-size: 1.25rem; /* 20px */
+    text-align: center;
+  }
+}
+
+/* ========================================================= */
+/*                   OUR HISTORY SECTION                     */
+/*    Desktop frame: 1440 x 664                              */
+/* ========================================================= */
+
+.history {
+  background: #cbd5c0; /* background colour from your Figma */
+  width: 100%; /* fully span width of screen */
+  display: flex; /* center contents vertically */
+  justify-content: center;
+  --history-button-gap: 32px;
+  padding: 80px 20px var(--history-button-gap); /* creates vertical breathing room */
+}
+
+/* --------------------------------------------------------- */
+/* Outer container (matches your design proportions)         */
+/* --------------------------------------------------------- */
+
+.history-container {
+  width: 100%;
+  max-width: 1440px; /* your exact desktop frame width */
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* --------------------------------------------------------- */
+/* History Heading (H1 equivalent in this section)           */
+/* Figma text box = 789 x 81, Lora Regular, 64px             */
+/* --------------------------------------------------------- */
+
+.history-title {
+  font-family: 'Lora', serif;
+  font-size: 64px; /* exact from Figma */
+  font-weight: 400; /* Lora Regular */
+  margin: 0 auto 40px; /* spacing below heading */
+  max-width: 789px; /* exact Figma width */
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* --------------------------------------------------------- */
+/* Paragraph text block                                      */
+/* Text box = 1004 x 345, 24px Lora Regular                  */
+/* --------------------------------------------------------- */
+
+.history-text {
+  font-family: 'Lora', serif;
+  font-size: 24px; /* exact Figma size */
+  font-weight: 400;
+  max-width: 1004px; /* exact text-container width */
+  line-height: 1.5; /* readable line spacing */
+  margin: 0 auto; /* center horizontally */
+  color: #333; /* better contrast on light bg */
+  text-align: left;
+}
+
+.history-book-button {
+  width: 100%;
+  max-width: 486px;
+  margin: var(--history-button-gap) auto 0;
+  transition: all 0.2s ease;
+}
+
+/* ========================================================= */
+/*                     OUR FOOD SECTION                      */
+/* ========================================================= */
+
+.food-section {
+  background: #cbd5c0; /* your Figma background */
+  width: 100%;
+  padding: 60px 20px; /* vertical breathing space */
+  display: flex;
+  justify-content: center;
+}
+
+.food-container {
+  width: 100%;
+  max-width: 1440px; /* exact Figma container width */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* --------------------------------------------------------- */
+/* LEFT COLUMN — IMAGE GRID                                  */
+/* 4 images, each exactly 282 x 243                          */
+/* --------------------------------------------------------- */
+
+.food-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 32px; /* spacing between images */
+  width: 600px; /* visually matches grid column width */
+}
+
+.food-img {
+  width: 282px; /* exact Figma dimensions */
+  height: 243px;
+  object-fit: cover;
+  border-radius: 6px; /* optional */
+  background: #cbd5c0; /* fallback colour */
+}
+
+/* --------------------------------------------------------- */
+/* RIGHT COLUMN — TEXT                                        */
+/* H2 box = 486 x 101                                         */
+/* Paragraph box = 486 x 405                                  */
+/* --------------------------------------------------------- */
+
+.food-text-column {
+  width: 486px; /* exact Figma width */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 518px; /* matches 2x image rows + gap */
+}
+
+.food-title {
+  background: #dfe6da; /* Figma block colour */
+  width: 100%;
+  height: 101px; /* exact */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px; /* match food image radius */
+
+  font-family: 'Lora', serif;
+  font-size: 64px; /* exact Figma size */
+  font-weight: 400;
+  color: black;
+  margin: 0 0 24px 0;
+}
+
+.food-description {
+  background: #dfe6da; /* Figma background */
+  width: 100%;
+  height: 300px; /* align total height with image column */
+  padding: 30px;
+  overflow-y: auto; /* allow vertical scroll when text exceeds height */
+  overflow-x: hidden;
+  border-radius: 6px; /* match food image radius */
+
+  font-family: 'Lora', serif;
+  font-size: 24px;
+  line-height: 1.5;
+  color: black;
+  margin: 0;
+}
+
+.food-menu-button {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto; /* aligns button with image grid bottom */
+  padding: 20px 44px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+/* Hover / focus */
+.food-menu-button:hover,
+.food-menu-button:focus {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* ========================================================= */
+/*                     DRINK SECTION                         */
+/* ========================================================= */
+
+.drink-section {
+  background: #dfe6da; /* your Figma background */
+  width: 100%;
+  padding: 60px 20px; /* vertical breathing space */
+  display: flex;
+  justify-content: center;
+}
+
+.drink-container {
+  width: 100%;
+  max-width: 1440px; /* exact Figma container width */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+/* --------------------------------------------------------- */
+/* LEFT/RIGHT COLUMN — IMAGE GRID                            */
+/* 4 images, each exactly 282 x 243                          */
+/* --------------------------------------------------------- */
+
+.drink-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto); /* 2 rows */
+  gap: 32px; /* spacing between images */
+  width: 600px; /* visually matches grid column width */
+}
+
+.drink-img {
+  width: 282px; /* exact Figma dimensions */
+  height: 243px;
+  object-fit: cover;
+  border-radius: 6px; /* optional */
+  background: #cbd5c0; /* fallback colour */
+}
+
+/* --------------------------------------------------------- */
+/* LEFT/RIGHT COLUMN — TEXT                                  */
+/* H2 box = 486 x 101                                         */
+/* Paragraph box = 486 x 405                                  */
+/* --------------------------------------------------------- */
+
+.drink-text-column {
+  width: 486px; /* exact Figma width */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 518px; /* matches 2x image rows + gap */
+}
+
+.drink-title {
+  background: #cbd5c0; /* Figma block colour */
+  width: 100%;
+  height: 101px; /* exact */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px; /* match image radius */
+
+  font-family: 'Lora', serif;
+  font-size: 64px; /* exact Figma size */
+  font-weight: 400;
+  color: black;
+  margin: 0 0 24px 0;
+}
+
+.drink-description {
+  background: #cbd5c0; /* Figma background */
+  width: 100%;
+  height: 300px; /* align total height with image column */
+  padding: 30px;
+  overflow-y: auto; /* allow vertical scroll when text exceeds height */
+  overflow-x: hidden;
+  border-radius: 6px; /* match image radius */
+
+  font-family: 'Lora', serif;
+  font-size: 24px;
+  line-height: 1.5;
+  color: black;
+  margin: 0;
+}
+
+.drink-menu-button {
+  display: inline-flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: auto; /* aligns button with image grid bottom */
+  padding: 20px 44px;
+  background-color: #ffffff;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.drink-menu-button:hover,
+.drink-menu-button:focus {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+/* ========================================================= */
+/*                     BOOK NOW SECTION                      */
+/* ========================================================= */
+
+.book-now-section {
+  background: #dfe6da;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 80px 20px;
+}
+
+.book-now-container {
+  width: 1440px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.book-now-main {
+  width: 1248px;
+  height: 460px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.book-now-title {
+  font-family: 'Lora', serif;
+  font-size: 64px; /* exact from Figma */
+  font-weight: 400; /* Lora Regular */
+  margin: 0 auto 40px; /* spacing below heading */
+  max-width: 789px; /* exact Figma width */
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* ========================================================= */
+/*             FOOD SECTION — TABLET + MOBILE                */
+/* ========================================================= */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .food-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .food-text-column {
+    display: contents; /* lets title/images/description stack in order */
+  }
+
+  .food-title {
+    order: 1;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  .food-images {
+    order: 2;
+    width: 100%;
+    max-width: 600px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 24px;
+  }
+
+  .food-description {
+    order: 3;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .food-menu-button {
+    order: 4;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+
+  .drink-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .drink-text-column {
+    display: contents; /* lets title/images/description stack in order */
+  }
+
+  .drink-title {
+    order: 1;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  .drink-images {
+    order: 2;
+    width: 100%;
+    max-width: 600px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 24px;
+  }
+
+  .drink-description {
+    order: 3;
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .drink-menu-button {
+    order: 4;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+
+  .drink-menu-button {
+    order: 4;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 375px) {
+  .food-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .food-text-column {
+    display: contents; /* lets title/images/description stack in order */
+  }
+
+  .food-title {
+    order: 1;
+    width: 100%;
+    margin: 0 auto 24px;
+  }
+
+  .food-images {
+    order: 2;
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .food-description {
+    order: 3;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .food-menu-button {
+    order: 4;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .drink-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .drink-text-column {
+    display: contents; /* lets title/images/description stack in order */
+  }
+
+  .drink-title {
+    order: 1;
+    width: 100%;
+    margin: 0 auto 24px;
+  }
+
+  .drink-images {
+    order: 2;
+    width: 100%;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .drink-description {
+    order: 3;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .drink-menu-button {
+    order: 4;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .drink-menu-button {
+    order: 4;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+}
+
+/* ========================================================= */
+/*               FOOD SECTION RESPONSIVENESS                */
+/* ========================================================= */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .food-section {
+    padding: 50px 24px;
+  }
+
+  .food-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .food-images {
+    order: 2;
+    width: 100%;
+    max-width: 600px;
+    gap: 24px;
+    align-self: center;
+  }
+
+  .food-text-column {
+    display: contents;
+  }
+
+  .food-title {
+    order: 1;
+    font-size: 48px;
+    height: auto;
+    padding: 16px 12px;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+
+  .food-description {
+    order: 3;
+    min-height: 0;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+
+  .food-menu-button {
+    order: 4;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 600px;
+    align-self: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .food-section {
+    padding: 40px 20px;
+  }
+
+  .food-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .food-images {
+    order: 2;
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 320px;
+    gap: 20px;
+    align-self: center;
+  }
+
+  .food-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 282 / 243;
+  }
+
+  .food-text-column {
+    display: contents;
+  }
+
+  .food-title {
+    order: 1;
+    font-size: 36px;
+    height: auto;
+    padding: 14px 10px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .food-description {
+    order: 3;
+    min-height: 0;
+    font-size: 18px;
+    padding: 20px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .food-menu-button {
+    order: 4;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+}
+
+/* ========================================================= */
+/*             GLOBAL RESPONSIVE OVERRIDES                  */
+/* ========================================================= */
+
+@media (max-width: 1024px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .hero {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .history {
+    padding: 64px 24px 40px;
+  }
+
+  .history-title {
+    font-size: 48px;
+    margin-bottom: 28px;
+  }
+
+  .history-text {
+    font-size: 20px;
+  }
+
+  .food-container,
+  .drink-container {
+    gap: 32px;
+  }
+
+  .food-images,
+  .drink-images {
+    width: 100%;
+    max-width: 640px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .food-img,
+  .drink-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 282 / 243;
+  }
+
+  .food-text-column,
+  .drink-text-column {
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+  }
+
+  .food-title,
+  .drink-title {
+    font-size: 48px;
+    height: auto;
+    padding: 16px 12px;
+  }
+
+  .food-description,
+  .drink-description {
+    height: auto;
+    font-size: 20px;
+  }
+
+  .book-now-section {
+    padding: 64px 24px;
+  }
+
+  .book-now-container,
+  .book-now-main {
+    width: 100%;
+    height: auto;
+  }
+
+  .book-now-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    height: 260px;
+  }
+
+  .hero-content {
+    padding: 0 16px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .history {
+    padding: 48px 20px 32px;
+  }
+
+  .history-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .history-text {
+    font-size: 18px;
+    text-align: left;
+  }
+
+  .food-images,
+  .drink-images {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+  }
+
+  .food-text-column,
+  .drink-text-column {
+    max-width: 360px;
+  }
+
+  .food-title,
+  .drink-title {
+    font-size: 36px;
+    padding: 12px 10px;
+  }
+
+  .food-description,
+  .drink-description {
+    font-size: 18px;
+    padding: 20px;
+  }
+
+
+  .book-now-section {
+    padding: 48px 20px;
+  }
+
+  .book-now-title {
+    font-size: 36px;
+  }
+}
