@@ -279,7 +279,7 @@
   width: 100%;
   margin-top: auto; /* aligns button with image grid bottom */
   padding: 20px 44px;
-  background-color: #ffffff;
+  background-color: #dfe6da;
   color: #000000;
   text-decoration: none;
   font-weight: 600;
@@ -391,7 +391,7 @@
   width: 100%;
   margin-top: auto; /* aligns button with image grid bottom */
   padding: 20px 44px;
-  background-color: #ffffff;
+  background-color: #cbd5c0;
   color: #000000;
   text-decoration: none;
   font-weight: 600;
@@ -874,7 +874,6 @@
     font-size: 18px;
     padding: 20px;
   }
-
 
   .book-now-section {
     padding: 48px 20px;
